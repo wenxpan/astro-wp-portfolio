@@ -28,6 +28,16 @@ const { pageTitle, description } = Astro.props
       <Header />
       <Nav />
       <main class="">
+        {
+          pageTitle && (
+            <div class="py-4 mb-1">
+              <h1 class="text-4xl font-extrabold text-primary dark:text-dark-primary">
+                {pageTitle}
+              </h1>
+              <p class="text-gray-400">{description}</p>
+            </div>
+          )
+        }
         <slot />
       </main>
 
