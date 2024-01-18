@@ -15,5 +15,11 @@
     "src/**/*.ts",
     "src/pages/rss.xml.js",
     "src/**/*.astro"
+  ],
+  "exclude": [
+    "node_modules",
+    "./node_modules",
+    "./node_modules/*",
+    "./node_modules/@types/node/index.d.ts"
   ]
 }
