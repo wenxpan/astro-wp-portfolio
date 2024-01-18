@@ -15,7 +15,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        mono: ["Fira Code Variable", ...defaultTheme.fontFamily.mono]
+        mono: ["Fira Code Variable", ...defaultTheme.fontFamily.mono],
+        sans: ["Open Sans Variable", ...defaultTheme.fontFamily.sans]
       }
     }
   },
