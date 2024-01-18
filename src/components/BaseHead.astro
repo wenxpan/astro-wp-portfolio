@@ -32,3 +32,15 @@ const { image, url } = SITE
 <meta property="twitter:url" content={url} />
 <meta property="twitter:description" content={description} />
 {image && <meta property="twitter:image" content={image} />}
+
+<script is:inline>
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark")
+  } else {
+    document.documentElement.classList.remove("dark")
+  }
+</script>
