@@ -4,12 +4,13 @@ import { Icon } from "astro-icon/components"
 const subHeading = "Full stack web developer"
 ---
 
-<header class="header">
+<header class="flex gap-4 border-b py-3">
   <div class="header__logo">
-    <a href="/" class="avatar">
+    <a href="/" class="avatar" aria-label="Portfolio home">
       <Icon
         name="wp-logo"
         class="w-16 h-16 rounded-full overflow-hidden text-primary dark:text-dark-primary"
+        aria-hidden="true"
       />
     </a>
   </div>
@@ -17,7 +18,7 @@ const subHeading = "Full stack web developer"
     <h3
       class="text-4xl font-extrabold md:text-5xl text-secondary dark:text-dark-secondary"
     >
-      <a href="/">{SITE.name}</a>
+      {SITE.name}
     </h3>
     <div class="header__meta-more flex">
       <p class="text-xl flex-1 dark:text-gray-200">
@@ -27,17 +28,22 @@ const subHeading = "Full stack web developer"
         <ul class="flex gap-3 text-gray-400">
           <li>
             <!-- TODO: add functionality -->
-            <Icon name="icon-park-outline:search" /><li>
-              <a href={SITE.githubUrl} title={`${SITE.name}'s Github URL'`}>
+            <Icon name="icon-park-outline:search" aria-hidden="true" />
+            <li>
+              <a
+                href={SITE.githubUrl}
+                aria-label={`${SITE.name}'s Github URL'`}
+              >
                 <Icon
                   name="icon-park-outline:github-one"
                   class="hover:text-primary"
+                  aria-hidden="true"
                 />
               </a>
             </li>
             <li>
-              <a href="/rss.xml" title="RSS">
-                <Icon name="ph:rss" />
+              <a href="/rss.xml" aria-label="Link to RSS">
+                <Icon name="ph:rss" aria-hidden="true" />
               </a>
             </li>
             <li>
@@ -52,9 +58,6 @@ const subHeading = "Full stack web developer"
   </div>
 
   <style>
-    .header {
-      @apply flex gap-4 border-b py-3 /* border-gray-200 dark:border-gray-700 - check styles/global.css */;
-    }
     svg {
       @apply hover:text-primary min-h-6 min-w-6 cursor-pointer;
     }
