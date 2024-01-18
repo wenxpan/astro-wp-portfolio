@@ -5,6 +5,7 @@ import BaseHead from "../components/BaseHead.astro"
 import { SITE } from "@/config"
 import BackgroundWrapper from "@/components/BackgroundWrapper.astro"
 import Header from "@components/Header.astro"
+import Nav from "@/components/Nav.astro"
 
 interface Props {
   pageTitle?: string
@@ -25,6 +26,7 @@ const { pageTitle, description } = Astro.props
   <body class="font-sans antialiased min-h-screen bg-gray-100 dark:bg-gray-800">
     <BackgroundWrapper>
       <Header />
+      <Nav />
       <main class="">
         <slot />
       </main>
