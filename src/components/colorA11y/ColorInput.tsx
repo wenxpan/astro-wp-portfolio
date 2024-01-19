@@ -1,13 +1,17 @@
-import { useState } from "preact/hooks"
+import { useEffect, useState } from "preact/hooks"
 import colors from "tailwindcss/colors"
 import { score, hex } from "wcag-contrast"
 import hexRgb from "hex-rgb"
 import clsx from "clsx"
 
-// console.log(colors["rose"]?.["100"])
-
 type ColorKey = keyof typeof colors
 type ColorShades = Record<string, string>
+
+interface ColorSelectorProps {
+  isBackground: boolean
+  colorHex: string
+  setColorHex: (hex: string) => void
+}
 
 const generateColorList = () => {
   // https://stackoverflow.com/questions/58387089/how-to-easily-get-non-getter-properties-from-an-object
@@ -24,61 +28,229 @@ const generateShadeList = (twColor: ColorKey) => {
   return colorShades ? Object.keys(colorShades) : []
 }
 
-export const ColorInput = () => {
-  const [selectedColor, setSelectedColor] = useState("rose" as ColorKey)
-  const [selectedShade, setSelectedShade] = useState("200")
+const ColorSelector = ({
+  isBackground = true,
+  setColorHex,
+  colorHex
+}: ColorSelectorProps) => {
+  const [selectedColor, setSelectedColor] = useState<ColorKey | null>(null)
+  const [selectedShade, setSelectedShade] = useState<string | null>(null)
 
   const colorList = generateColorList()
-  const shadeList = generateShadeList(selectedColor)
+  const shadeList = generateShadeList(colorList[0])
+
+  const handleColorChange = (color: ColorKey) => {
+    setSelectedColor(color)
+    if (!selectedShade) {
+      setSelectedShade("500")
+    }
+  }
+
+  const handleShadeChange = (shade: string) => {
+    setSelectedShade(shade)
+  }
+
+  const handleBlackWhiteSelection = (hex: string) => {
+    setColorHex(hex)
+    setSelectedColor(null)
+    setSelectedShade(null)
+  }
+
+  useEffect(() => {
+    if (selectedColor && selectedShade) {
+      setColorHex((colors[selectedColor] as ColorShades)[selectedShade])
+    }
+  }, [selectedColor, selectedShade])
 
   return (
     <>
-      <div>
-        <div className={clsx("flex flex-wrap")}>
+      <div className={clsx("flex")}>
+        <div className="flex flex-wrap">
           {colorList.map((color) => (
             <button
               key={color}
-              className={clsx(
-                "p-2 m-1",
+              className={`p-2 m-1 font-semibold ${
                 selectedColor === color
                   ? "ring-2 ring-offset-2 ring-blue-500"
                   : ""
-              )}
-              style={{ backgroundColor: colors[color]?.["200"] }}
-              onClick={() => {
-                console.log("Selected color:", color)
-                setSelectedColor(color)
-              }}
+              }`}
+              style={
+                isBackground
+                  ? {
+                      backgroundColor: colors[color]?.["100"]
+                    }
+                  : {
+                      color: colors[color]?.["600"],
+                      borderColor: colors[color]?.["600"],
+                      borderStyle: "solid",
+                      borderWidth: "2px"
+                    }
+              }
+              onClick={() => handleColorChange(color)}
             >
               {color}
             </button>
           ))}
         </div>
-        <div className={clsx("flex flex-wrap")}>
+        <div className="flex flex-wrap">
           {shadeList.map((shade) => (
-            <button
-              key={shade}
-              className={clsx(
-                "p-2 m-1",
-                selectedShade === shade
-                  ? "ring-2 ring-offset-2 ring-blue-500"
-                  : ""
-              )}
-              style={{
-                backgroundColor: (colors[selectedColor] as ColorShades)[shade]
-              }}
-              onClick={() => {
-                setSelectedShade(shade)
-              }}
-            >
-              {shade}
-            </button>
+            <div className={clsx("flex items-center")}>
+              <button
+                key={shade}
+                className={`p-1 m-1 ${
+                  selectedShade &&
+                  selectedShade === shade &&
+                  "ring-2 ring-offset-2 ring-blue-500"
+                }`}
+                onClick={() => setSelectedShade(shade)}
+              >
+                <span
+                  class={clsx("p-1", !selectedColor && "disabled")}
+                  style={
+                    isBackground
+                      ? {
+                          backgroundColor: selectedColor
+                            ? (colors[selectedColor] as ColorShades)[shade]
+                            : "transparent",
+                          color: "transparent"
+                        }
+                      : {
+                          color: selectedColor
+                            ? (colors[selectedColor] as ColorShades)[shade]
+                            : "transparent"
+                        }
+                  }
+                >
+                  CSS
+                </span>
+                <p className={clsx(!selectedColor && "text-transparent")}>
+                  {shade}
+                </p>
+              </button>
+            </div>
           ))}
         </div>
       </div>
+      <button
+        className={clsx(
+          "p-2 m-1 font-semibold",
+          colorHex === "#000000" && "ring-2 ring-offset-2 ring-blue-500"
+        )}
+        style={
+          isBackground
+            ? { backgroundColor: "black", color: "white" }
+            : {
+                color: "black",
+                border: "2px solid black"
+              }
+        }
+        onClick={() => handleBlackWhiteSelection("#000000")}
+      >
+        Black
+      </button>
+      <button
+        className={clsx(
+          "p-2 m-1 font-semibold",
+          colorHex === "#FFFFFF" && "ring-2 ring-offset-2 ring-blue-500"
+        )}
+        style={
+          isBackground
+            ? { backgroundColor: "white", border: "2px solid black" }
+            : {
+                color: "white",
+                backgroundColor: "black",
+                border: "2px solid black"
+              }
+        }
+        onClick={() => handleBlackWhiteSelection("#FFFFFF")}
+      >
+        White
+      </button>
     </>
   )
 }
+
+export const ColorInput = () => {
+  const [bgColorHex, setBgColorHex] = useState("")
+  const [fgColorHex, setFgColorHex] = useState("")
+
+  return (
+    <div className="flex bg-white rounded-md p-4 flex-wrap md:flex-nowrap">
+      <div>
+        <h2>Background Color</h2>
+        <ColorSelector
+          isBackground={true}
+          setColorHex={setBgColorHex}
+          colorHex={bgColorHex}
+        />
+      </div>
+      <div>
+        <h2>Foreground Text Color</h2>
+        <ColorSelector
+          isBackground={false}
+          setColorHex={setFgColorHex}
+          colorHex={fgColorHex}
+        />
+      </div>
+    </div>
+  )
+}
+
+// export const ColorInput = () => {
+//   const [selectedColor, setSelectedColor] = useState("rose" as ColorKey)
+//   const [selectedShade, setSelectedShade] = useState("200")
+
+//   const colorList = generateColorList()
+//   const shadeList = generateShadeList(selectedColor)
+
+//   return (
+//     <>
+//       <div>
+//         <div className={clsx("flex flex-wrap")}>
+//           {colorList.map((color) => (
+//             <button
+//               key={color}
+//               className={clsx(
+//                 "p-2 m-1",
+//                 selectedColor === color
+//                   ? "ring-2 ring-offset-2 ring-blue-500"
+//                   : ""
+//               )}
+//               style={{ backgroundColor: colors[color]?.["200"] }}
+//               onClick={() => {
+//                 console.log("Selected color:", color)
+//                 setSelectedColor(color)
+//               }}
+//             >
+//               {color}
+//             </button>
+//           ))}
+//         </div>
+//         <div className={clsx("flex flex-wrap")}>
+//           {shadeList.map((shade) => (
+//             <button
+//               key={shade}
+//               className={clsx(
+//                 "p-2 m-1",
+//                 selectedShade === shade
+//                   ? "ring-2 ring-offset-2 ring-blue-500"
+//                   : ""
+//               )}
+//               style={{
+//                 backgroundColor: (colors[selectedColor] as ColorShades)[shade]
+//               }}
+//               onClick={() => {
+//                 setSelectedShade(shade)
+//               }}
+//             >
+//               {shade}
+//             </button>
+//           ))}
+//         </div>
+//       </div>
+//     </>
+//   )
+// }
 
 // const Table = () => {
 //   const [front, setFront] = useState("text-cyan-600")
