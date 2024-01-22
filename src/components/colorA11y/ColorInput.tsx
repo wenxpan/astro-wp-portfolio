@@ -1,15 +1,16 @@
-import { useEffect, useState } from "preact/hooks"
+import { useState } from "preact/hooks"
 import colors from "tailwindcss/colors"
 import { score, hex } from "wcag-contrast"
 import clsx from "clsx"
 
 type ColorKey = keyof typeof colors
 type ColorShades = Record<string, string>
+type twColorClass = { color: ColorKey; shade: string }
 
 interface ColorSelectorProps {
   isBackground: boolean
-  colorHex: string
-  setColorHex: (hex: string) => void
+  twClass: twColorClass
+  setTwClass: (twClass: twColorClass) => void
 }
 
 const generateColorList = () => {
@@ -27,47 +28,39 @@ const generateShadeList = (twColor: ColorKey) => {
   return colorShades ? Object.keys(colorShades) : []
 }
 
+const getColorHex = (twClass: twColorClass) => {
+  const { color, shade } = twClass
+  if (color === "white") return "#FFFFFF"
+  if (color === "black") return "#000000"
+
+  return (colors[color] as ColorShades)[shade]
+}
+
 const ColorSelector = ({
   isBackground = true,
-  setColorHex,
-  colorHex
+  twClass,
+  setTwClass
 }: ColorSelectorProps) => {
-  const [selectedColor, setSelectedColor] = useState<ColorKey | null>(null)
-  const [selectedShade, setSelectedShade] = useState<string | null>(null)
+  const { color: selectedColor, shade: selectedShade } = twClass
 
   const colorList = generateColorList()
   const shadeList = generateShadeList(colorList[0])
 
-  const twClassString =
-    (isBackground ? "bg-" : "text-") +
-    (selectedColor
-      ? selectedColor + "-" + selectedShade
-      : colorHex === "#000000"
-      ? "black"
-      : "white")
-
-  const handleColorChange = (color: ColorKey) => {
-    setSelectedColor(color)
+  const handleColorChange = (newColor: ColorKey) => {
+    if (newColor === "black" || newColor === "white") {
+      setTwClass({ color: newColor, shade: "" })
+      return
+    }
     if (!selectedShade) {
-      setSelectedShade("500")
+      setTwClass({ color: newColor, shade: "500" })
+    } else {
+      setTwClass({ ...twClass, color: newColor })
     }
   }
 
   const handleShadeChange = (shade: string) => {
-    setSelectedShade(shade)
+    setTwClass({ ...twClass, shade })
   }
-
-  const handleBlackWhiteSelection = (hex: string) => {
-    setColorHex(hex)
-    setSelectedColor(null)
-    setSelectedShade(null)
-  }
-
-  useEffect(() => {
-    if (selectedColor && selectedShade) {
-      setColorHex((colors[selectedColor] as ColorShades)[selectedShade])
-    }
-  }, [selectedColor, selectedShade])
 
   return (
     <>
@@ -104,36 +97,33 @@ const ColorSelector = ({
             <div className={clsx("flex items-center")}>
               <button
                 key={shade}
-                className={`p-1 m-1 ${
-                  selectedShade &&
+                className={clsx(
+                  "p-1 m-1",
+                  !selectedShade && "text-transparent",
                   selectedShade === shade &&
-                  "ring-2 ring-offset-2 ring-blue-500"
-                }`}
-                onClick={() => setSelectedShade(shade)}
-                disabled={!selectedColor}
+                    "ring-2 ring-offset-2 ring-blue-500"
+                )}
+                onClick={() => handleShadeChange(shade)}
+                disabled={!selectedShade}
               >
                 <span
-                  class={clsx("p-1", !selectedColor && "disabled")}
+                  class={clsx("p-1")}
                   style={
                     isBackground
                       ? {
-                          backgroundColor: selectedColor
-                            ? (colors[selectedColor] as ColorShades)[shade]
-                            : "transparent",
+                          backgroundColor: (
+                            colors[selectedColor] as ColorShades
+                          )[shade],
                           color: "transparent"
                         }
                       : {
-                          color: selectedColor
-                            ? (colors[selectedColor] as ColorShades)[shade]
-                            : "transparent"
+                          color: (colors[selectedColor] as ColorShades)[shade]
                         }
                   }
                 >
                   CSS
                 </span>
-                <p className={clsx(!selectedColor && "text-transparent")}>
-                  {shade}
-                </p>
+                <p>{shade}</p>
               </button>
             </div>
           ))}
@@ -142,7 +132,7 @@ const ColorSelector = ({
       <button
         className={clsx(
           "p-2 m-1 font-semibold",
-          colorHex === "#000000" && "ring-2 ring-offset-2 ring-blue-500"
+          selectedColor === "black" && "ring-2 ring-offset-2 ring-blue-500"
         )}
         style={
           isBackground
@@ -152,14 +142,14 @@ const ColorSelector = ({
                 border: "2px solid black"
               }
         }
-        onClick={() => handleBlackWhiteSelection("#000000")}
+        onClick={() => handleColorChange("black")}
       >
         Black {isBackground ? "Fill" : "Text"}
       </button>
       <button
         className={clsx(
           "p-2 m-1 font-semibold",
-          colorHex === "#FFFFFF" && "ring-2 ring-offset-2 ring-blue-500"
+          selectedColor === "white" && "ring-2 ring-offset-2 ring-blue-500"
         )}
         style={
           isBackground
@@ -170,11 +160,10 @@ const ColorSelector = ({
                 border: "2px solid black"
               }
         }
-        onClick={() => handleBlackWhiteSelection("#FFFFFF")}
+        onClick={() => handleColorChange("white")}
       >
         White {isBackground ? "Fill" : "Text"}
       </button>
-      <p>{twClassString}</p>
     </>
   )
 }
@@ -191,11 +180,14 @@ const ContrastPreview = ({
 
   return (
     <>
-      <section style={{ ...bgStyle, ...fgStyle }} className="border-2 p-3">
+      <section
+        style={{ ...bgStyle, ...fgStyle }}
+        className="border-2 p-3 rounded-md"
+      >
         <h1 role="presentation" className="text-[24px] font-bold">
           Preview
         </h1>
-        <p>{`${fgColorHex} ${bgColorHex}`}</p>
+        <p className="uppercase">{`${fgColorHex} ${bgColorHex}`}</p>
         <p className="py-2">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus
           harum labore neque error in tempore ex placeat autem, atque recusandae
@@ -227,8 +219,17 @@ const ContrastPreview = ({
 }
 
 export const ColorInput = () => {
-  const [bgColorHex, setBgColorHex] = useState("#FFFFFF")
-  const [fgColorHex, setFgColorHex] = useState("#000000")
+  const [bgTwClass, setBgTwClass] = useState<twColorClass>({
+    color: "white",
+    shade: ""
+  })
+  const [fgTwClass, setFgTwClass] = useState<twColorClass>({
+    color: "black",
+    shade: ""
+  })
+
+  const bgColorHex = getColorHex(bgTwClass)
+  const fgColorHex = getColorHex(fgTwClass)
 
   const contrastRatio =
     bgColorHex && fgColorHex
@@ -237,38 +238,63 @@ export const ColorInput = () => {
 
   const contrastScore = contrastRatio ? score(contrastRatio) : null
 
+  const twClassString = `text-${fgTwClass.color}${fgTwClass.shade && "-"}${
+    fgTwClass.shade
+  } bg-${bgTwClass.color}${bgTwClass.shade && "-"}${bgTwClass.shade}`
+
+  const checkPassFail = (score: number | string, standard: number) => {
+    const passMarker = (
+      <span className="bg-green-700 px-3 rounded-2xl text-white">Pass</span>
+    )
+
+    const failMarker = (
+      <span className="bg-red-700 px-3 rounded-2xl text-white">Fail</span>
+    )
+    if (typeof score === "number") {
+      return score > standard ? passMarker : failMarker
+    }
+    return null
+  }
+
   return (
     <>
       <div className="grid grid-cols-2 gap-2 bg-white rounded-md p-4 md:flex-nowrap">
         <div>
-          <h2>Foreground Text Color</h2>
+          <h2 className="font-semibold">Foreground Text Color</h2>
           <ColorSelector
             isBackground={false}
-            setColorHex={setFgColorHex}
-            colorHex={fgColorHex}
+            twClass={fgTwClass}
+            setTwClass={setFgTwClass}
           />
         </div>
         <div>
-          <h2>Background Color</h2>
+          <h2 className="font-semibold">Background Color</h2>
           <ColorSelector
             isBackground={true}
-            setColorHex={setBgColorHex}
-            colorHex={bgColorHex}
+            twClass={bgTwClass}
+            setTwClass={setBgTwClass}
           />
         </div>
         <ContrastPreview bgColorHex={bgColorHex} fgColorHex={fgColorHex} />
-        <div
+        <section
           class={clsx(
-            "border-2",
+            "border-2 p-3 rounded-md place-self-start",
             contrastScore && contrastScore === "Fail"
               ? "border-red-500"
               : "border-green-500"
           )}
         >
-          <p>
-            Result: {contrastRatio} {contrastScore && `(${contrastScore})`}
+          <p>{twClassString}</p>
+          <p className="text-2xl my-2">
+            Contrast: {contrastRatio}:1 {contrastScore && `(${contrastScore})`}
           </p>
-        </div>
+          <p className="font-semibold">WCAG Level AA</p>
+          <p>Large text - 3:1 {checkPassFail(contrastRatio, 3)}</p>
+          <p>Normal text - 4.5:1 {checkPassFail(contrastRatio, 4.5)}</p>
+          <p className="font-semibold">WCAG Level AAA</p>
+          <p>Large text - 4.5:1 {checkPassFail(contrastRatio, 4.5)}</p>
+          <p>Normal text - 7:1 {checkPassFail(contrastRatio, 7)}</p>
+        </section>
       </div>
     </>
   )
