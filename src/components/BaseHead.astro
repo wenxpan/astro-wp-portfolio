@@ -1,5 +1,6 @@
 ---
 import { SITE } from "@/config"
+import { ViewTransitions } from "astro:transitions"
 
 const { title, description } = Astro.props
 const { image, url } = SITE
@@ -32,6 +33,8 @@ const { image, url } = SITE
 <meta property="twitter:url" content={url} />
 <meta property="twitter:description" content={description} />
 {image && <meta property="twitter:image" content={image} />}
+
+<ViewTransitions />
 
 <script is:inline>
   if (

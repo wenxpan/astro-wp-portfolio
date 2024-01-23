@@ -21,10 +21,6 @@ export const NAV_ITEMS: {
   about: {
     path: "/about",
     title: "about"
-  },
-  twColor: {
-    path: "/tw-color",
-    title: "tailwind a11y"
   }
 }
 
