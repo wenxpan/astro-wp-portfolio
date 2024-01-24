@@ -3,9 +3,6 @@ title: Building a Wordle Clone - A Developer's Journey
 date: "2023-05-20"
 author: Wenxuan Pan
 description: My journey creating wordle clone terminal app
-image:
-  url: https://images.unsplash.com/photo-1589409514187-c21d14df0d04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80
-  alt: ""
 tags:
   - python
   - terminal

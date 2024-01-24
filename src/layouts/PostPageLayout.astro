@@ -1,0 +1,41 @@
+---
+import BaseLayout from "./BaseLayout.astro"
+import Prose from "@/components/Prose.astro"
+const { frontmatter } = Astro.props
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+  <div class="inline-flex gap-2" slot="before-title">
+    {
+      frontmatter.tags.map((tag: string) => (
+        <a
+          class="text-gray-700 font-semibold hover:text-primary dark:hover:text-dark-primary"
+          href={`/blog/tags/${tag}`}
+        >
+          #{tag}
+        </a>
+      ))
+    }
+  </div>
+  <p class="mb-4 italic">
+    {
+      new Intl.DateTimeFormat("en-GB", { dateStyle: "full" }).format(
+        new Date(frontmatter.date)
+      )
+    }
+  </p>
+  {
+    frontmatter.image && (
+      <img
+        class="relative rounded-lg shadow-xl overflow-hidden w-full"
+        src={frontmatter.image.url}
+        width="300"
+        alt={frontmatter.image.alt}
+      />
+    )
+  }
+
+  <Prose>
+    <slot />
+  </Prose>
+</BaseLayout>

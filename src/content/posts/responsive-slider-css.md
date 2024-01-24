@@ -3,16 +3,10 @@ title: How to create a responsive image slider in vanilla CSS
 date: "2023-06-01"
 author: Wenxuan Pan
 description: Create a responsive image slider in vanilla CSS
-image:
-  url: https://images.unsplash.com/photo-1589409514187-c21d14df0d04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80
-  alt: "an astronaunt in the space"
 tags:
   - css
-  - slider
   - ui component
 ---
-
-## Creating an image slider in HTML and CSS
 
 In the world of web development, image sliders are a common feature on many websites, allowing the display of multiple images in a sleek, smooth, and visually appealing manner. They're an effective tool for showcasing products, portfolio pieces, or for adding a dynamic, visual touch to your site.
 
