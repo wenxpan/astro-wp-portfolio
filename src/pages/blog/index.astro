@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import { getCollection } from "astro:content"
+import PostPreview from "@/components/PostPreview.astro"
+
+const allPosts = await getCollection("posts")
+
+const pageTitle = "Blog"
+const description = "My learning journey"
+---
+
+<BaseLayout pageTitle={pageTitle} description={description}>
+  <p>blog content</p>
+  {
+    allPosts.map((post) => (
+      <PostPreview url={`/blog/${post.slug}`} title={post.data.title} />
+    ))
+  }
+</BaseLayout>
