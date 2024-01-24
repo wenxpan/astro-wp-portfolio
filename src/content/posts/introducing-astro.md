@@ -3,7 +3,9 @@ title: Introducing Astro - Ship Less JavaScript
 date: "2021-06-08"
 author: Fred K. Schott
 description: There's a simple secret to building a faster website — just ship less.
-image: https://images.unsplash.com/photo-1589409514187-c21d14df0d04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80
+image:
+  url: https://images.unsplash.com/photo-1589409514187-c21d14df0d04?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80
+  alt: "an astronaunt in the space"
 tags:
   - astro
   - jam-stack
@@ -30,3 +32,35 @@ Today I'm excited to publicly share Astro: a new kind of static site builder tha
 This post marks the first public beta release of Astro. Missing features and bugs are still to be expected at this early stage. There are still some months to go before an official 1.0 release, but there are already several fast sites built with Astro in production today. We would love your early feedback as we move towards a v1.0 release later this year.
 
 > To learn more about Astro and start building your first site, check out the project README.
+
+# Example - Syntax Highlighting
+
+## Shell(Bash)
+
+```bash
+# make a new project directory and jump into it
+mkdir my-astro-project && cd $_
+
+# create a new project with npm
+npm create astro@latest
+
+# or yarn
+yarn create astro
+
+# or pnpm
+pnpm create astro@latest
+```
+
+## Python
+
+```python
+print('hello world')
+```
+
+## Javascript
+
+```js
+const func = () => {
+  alert("hello")
+}
+```

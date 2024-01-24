@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro"
+import Prose from "@/components/Prose.astro"
 const { frontmatter } = Astro.props
 import { fade } from "astro:transitions"
 ---
@@ -10,7 +11,15 @@ import { fade } from "astro:transitions"
     <em>{frontmatter.description}</em>
   </p>
   <p>Written by: <a href="/about/">{frontmatter.author}</a></p>
-  <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+  {
+    frontmatter.image && (
+      <img
+        src={frontmatter.image.url}
+        width="300"
+        alt={frontmatter.image.alt}
+      />
+    )
+  }
   <div class="tags">
     {
       frontmatter.tags.map((tag: string) => (
@@ -20,7 +29,9 @@ import { fade } from "astro:transitions"
       ))
     }
   </div>
-  <slot />
+  <Prose>
+    <slot />
+  </Prose>
 </BaseLayout>
 
 <style>

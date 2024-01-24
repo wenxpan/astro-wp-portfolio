@@ -3,19 +3,12 @@
   "compilerOptions": {
     "baseUrl": "/Users/wenxuanp/Coding/projects/astro-wp-portfolio",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ]
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@images/*": ["src/images/*"]
     },
-    "types": [
-      "astro/env"
-    ],
+    "types": ["astro/env"],
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
   },
