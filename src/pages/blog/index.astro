@@ -10,7 +10,7 @@ const description = "My learning journey"
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <section class="flex flex-col gap-12">
+  <ul class="flex flex-col gap-12">
     {allPosts.map((post) => <PostPreview post={post} />)}
-  </section>
+  </ul>
 </BaseLayout>

@@ -6,7 +6,8 @@
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
-      "@images/*": ["src/images/*"]
+      "@images/*": ["src/images/*"],
+      "@layouts/*": ["src/layouts/*"]
     },
     "types": ["astro/env"],
     "jsx": "react-jsx",

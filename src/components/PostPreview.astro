@@ -23,7 +23,7 @@ const getMonthName = (date: Date) => MONTHS[new Date(date).getMonth()]
 <li class="flex gap-6">
   <div class="sm:w-20 md:w-32">
     <div class="flex flex-col w-full text-center">
-      <span class="text-6xl font-semibold text-gray-500 dark:text-gray-300"
+      <span class="text-4xl font-semibold text-gray-500 dark:text-gray-300"
         >{new Date(post.date).getDate()}</span
       >
       <span class="text-gray-400"
@@ -35,13 +35,13 @@ const getMonthName = (date: Date) => MONTHS[new Date(date).getMonth()]
   </div>
   <div class="flex-1">
     <h4
-      class="text-2xl font-semibold text-primary dark:text-dark-primary hover:underline mb-2"
+      class="text-xl font-semibold text-primary dark:text-dark-primary hover:underline mb-2"
     >
       <a href={`/blog/${slug}`} title={post.title}>{post.title}</a>
     </h4>
     {
       post.description && (
-        <p class="text-lg leading-6 line-clamp-2 dark:text-white hyphens-auto">
+        <p class="leading-6 line-clamp-2 dark:text-white hyphens-auto">
           {post.description}
         </p>
       )
