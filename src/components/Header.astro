@@ -26,33 +26,24 @@ const subHeading = "Full-stack web developer"
       <p class="text-xl flex-1 dark:text-gray-200">
         {subHeading}
       </p>
-      <nav class="header__nav flex">
-        <ul class="flex gap-3 text-gray-400">
+      <nav class="flex">
+        <ul class="flex gap-3 text-gray-400 dark:text-gray-200">
+          <!-- TODO: add functionality -->
+          <Icon name="icon-park-outline:search" aria-hidden="true" />
           <li>
-            <!-- TODO: add functionality -->
-            <Icon name="icon-park-outline:search" aria-hidden="true" />
-            <li>
-              <a
-                href={SITE.githubUrl}
-                aria-label={`${SITE.name}'s Github URL'`}
-              >
-                <Icon
-                  name="icon-park-outline:github-one"
-                  class="hover:text-primary"
-                  aria-hidden="true"
-                />
-              </a>
-            </li>
-            <li>
-              <a href="/rss.xml" aria-label="Link to RSS">
-                <Icon name="ph:rss" aria-hidden="true" />
-              </a>
-            </li>
-            <li>
-              <!-- TODO: add mode switch -->
-              <Icon name="icon-park-outline:sun-one" />
-              <!-- <Icon name="icon-park-outline:moon" /> -->
-            </li>
+            <a href={SITE.githubUrl} aria-label={`${SITE.name}'s Github URL'`}>
+              <Icon name="icon-park-outline:github-one" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a href="/rss.xml" aria-label="Link to RSS">
+              <Icon name="ph:rss" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <!-- TODO: add mode switch -->
+            <Icon name="icon-park-outline:sun-one" />
+            <!-- <Icon name="icon-park-outline:moon" /> -->
           </li>
         </ul>
       </nav>
@@ -61,7 +52,7 @@ const subHeading = "Full-stack web developer"
 
   <style>
     svg {
-      @apply hover:text-primary min-h-6 min-w-6 cursor-pointer;
+      @apply hover:text-primary dark:hover:text-dark-primary min-h-6 min-w-6 cursor-pointer;
     }
   </style>
 </header>

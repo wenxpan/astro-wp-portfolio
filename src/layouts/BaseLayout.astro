@@ -36,7 +36,11 @@ const { pageTitle, description } = Astro.props
               <h1 class="text-4xl font-extrabold text-primary dark:text-dark-primary leading-snug">
                 {pageTitle}
               </h1>
-              {description && <p class="text-gray-700">{description}</p>}
+              {description && (
+                <p class="text-gray-700 dark:text-dark-primary">
+                  {description}
+                </p>
+              )}
             </div>
           )
         }

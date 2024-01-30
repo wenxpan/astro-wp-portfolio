@@ -7,6 +7,10 @@ export default {
   darkMode: "class",
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
+    fontFamily: {
+      mono: ["Fira Code Variable", ...defaultTheme.fontFamily.mono],
+      sans: ["Open Sans Variable", ...defaultTheme.fontFamily.sans]
+    },
     extend: {
       colors: {
         primary: colors.cyan[700],
@@ -18,10 +22,46 @@ export default {
           accent: colors.pink[500]
         }
       },
-      fontFamily: {
-        mono: ["Fira Code Variable", ...defaultTheme.fontFamily.mono],
-        sans: ["Open Sans Variable", ...defaultTheme.fontFamily.sans]
-      }
+      typography: (theme) => ({
+        dark: {
+          css: {
+            color: theme("colors.gray.100"),
+            "--tw-prose-bold": theme("colors.gray.100"),
+            "--tw-prose-headings": theme("colors.dark.primary"),
+            "--tw-prose-links": theme("colors.gray.100"),
+            a: {
+              "&:hover": {
+                color: theme("colors.dark.primary")
+              }
+            },
+            blockquote: {
+              color: theme("colors.dark.primary"),
+              borderColor: theme("colors.primary")
+            },
+            "blockquote > p::before, p::after": {
+              color: theme("colors.primary")
+            }
+          }
+        },
+        DEFAULT: {
+          css: {
+            "--tw-prose-headings": theme("colors.primary"),
+            a: {
+              "&:hover": {
+                color: theme("colors.primary")
+              }
+            },
+            blockquote: {
+              color: theme("colors.primary"),
+              fontSize: theme("fontSize.2xl"),
+              borderColor: theme("colors.dark.primary")
+            },
+            "blockquote > p::before, p::after": {
+              color: theme("colors.dark.primary")
+            }
+          }
+        }
+      })
     }
   },
   plugins: [require("@tailwindcss/typography")]
