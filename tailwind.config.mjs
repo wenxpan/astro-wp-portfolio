@@ -11,16 +11,11 @@ export default {
       colors: {
         primary: colors.cyan[700],
         secondary: colors.cyan[800],
+        accent: colors.pink[300],
         dark: {
           primary: colors.cyan[300],
-          secondary: colors.cyan[500]
-        },
-        accent: {
-          gray: {
-            light: colors.gray[300],
-            dark: colors.gray[500]
-          },
-          default: colors.blue[700]
+          secondary: colors.cyan[500],
+          accent: colors.pink[500]
         }
       },
       fontFamily: {

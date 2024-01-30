@@ -27,15 +27,16 @@ export const NAV_ITEMS: {
 export const SITE = {
   name: "Wenxuan Pan",
   title: "Wenxuan Pan",
-  description: "Web Portfolio site for Wenxuan Pan - A fullstack web developer",
+  description:
+    "Web Portfolio site for Wenxuan Pan - A full-stack web developer",
   url: "https://astro.wenxpan.com",
   githubUrl: "https://github.com/wenxpan",
   listDrafts: true,
   image: "", // TODO: add screenshot
   author: "Wenxuan Pan",
-  authorImage:
-    "https://pbs.twimg.com/profile_images/1272979356529221632/sxvncugt_400x400.jpg, https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
-  authorBio: "Fullstack web developer"
+  // authorImage:
+  //   "https://pbs.twimg.com/profile_images/1272979356529221632/sxvncugt_400x400.jpg, https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
+  authorBio: "Full-stack web developer"
 }
 
 // Ink - Theme configuration

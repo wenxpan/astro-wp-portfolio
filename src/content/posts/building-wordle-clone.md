@@ -1,7 +1,6 @@
 ---
 title: Building a Wordle Clone - A Developer's Journey
 date: "2023-05-20"
-author: Wenxuan Pan
 description: My journey creating wordle clone terminal app
 tags:
   - python

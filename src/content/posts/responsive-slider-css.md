@@ -1,7 +1,6 @@
 ---
 title: How to create a responsive image slider in vanilla CSS
 date: "2023-06-01"
-author: Wenxuan Pan
 description: Create a responsive image slider in vanilla CSS
 tags:
   - css
