@@ -1,10 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
+import { Content as AboutText } from "./_about-full.md"
+import Prose from "@/components/Prose.astro"
 
 const pageTitle = "About"
 const description = "My experience and coding skills"
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <p>About</p>
+  <Prose>
+    <AboutText />
+  </Prose>
 </BaseLayout>
