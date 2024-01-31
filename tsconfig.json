@@ -1,11 +1,12 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
+    "strictNullChecks": true,
+    "allowJs": true,
     "baseUrl": "/Users/wenxuanp/Coding/projects/astro-wp-portfolio",
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
       "@images/*": ["src/images/*"],
       "@layouts/*": ["src/layouts/*"]
     },

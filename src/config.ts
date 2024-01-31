@@ -10,13 +10,13 @@ export const NAV_ITEMS: {
     path: "/",
     title: "home"
   },
+  projects: {
+    path: "/projects",
+    title: "projects"
+  },
   blog: {
     path: "/blog",
     title: "blog"
-  },
-  tags: {
-    path: "/projects",
-    title: "projects"
   },
   about: {
     path: "/about",

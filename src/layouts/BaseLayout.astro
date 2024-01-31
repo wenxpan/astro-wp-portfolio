@@ -28,11 +28,11 @@ const { pageTitle, description } = Astro.props
     <BackgroundWrapper>
       <Header />
       <Nav />
-      <main class="min-h-[580px]">
+      <main class="min-h-[580px] pt-4">
         <slot name="before-title" />
         {
           pageTitle && (
-            <div class="py-4 mb-1">
+            <div class="mb-4">
               <h1 class="text-4xl font-extrabold text-primary dark:text-dark-primary leading-snug">
                 {pageTitle}
               </h1>

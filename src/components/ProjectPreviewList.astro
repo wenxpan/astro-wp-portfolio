@@ -1,0 +1,17 @@
+---
+import ProjectPreview from "@components/ProjectPreview.astro"
+import type { CollectionEntry } from "astro:content"
+
+type project = CollectionEntry<"projects">
+const { projects } = Astro.props
+---
+
+<ul class="flex flex-col gap-12">
+  {
+    projects.map((project: project) => (
+      <li>
+        <ProjectPreview project={project} />
+      </li>
+    ))
+  }
+</ul>

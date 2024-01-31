@@ -1,10 +1,14 @@
 ---
+import { getCollection } from "astro:content"
 import BaseLayout from "../layouts/BaseLayout.astro"
+import ProjectPreviewList from "@/components/ProjectPreviewList.astro"
 
 const pageTitle = "Projects"
 const description = "My side projects"
+
+const projects = await getCollection("projects")
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <p>project content</p>
+  <ProjectPreviewList projects={projects} />
 </BaseLayout>

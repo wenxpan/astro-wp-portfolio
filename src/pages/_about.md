@@ -1,8 +1,5 @@
-**Lorem ipsum dolor sit amet**, consectetur adipisicing
-elit. Totam voluptatem autem qui neque reprehenderit, voluptatibus
-cupiditate itaque aspernatur laudantium modi dicta, facere possimus
-ducimus provident praesentium, fuga non voluptas quis.
+### Hi there!
 
-### Lorem ipsum dolor
+I'm a fullstack web developer. In my spare time, I enjoy translating and playing video games.
 
-**Contact me via:** [LinkedIn](https://www.linkedin.com/in/wenxuan-p/) // [Email](wenxuanp42@gmail.com)
+<!-- **Contact me via:** [LinkedIn](https://www.linkedin.com/in/wenxuan-p/) // [Email](wenxuanp42@gmail.com) -->

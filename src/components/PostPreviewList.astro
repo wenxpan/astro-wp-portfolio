@@ -1,0 +1,17 @@
+---
+import PostPreview from "@components/PostPreview.astro"
+import type { CollectionEntry } from "astro:content"
+
+const { posts } = Astro.props
+type post = CollectionEntry<"posts">
+---
+
+<ul class="flex flex-col gap-12">
+  {
+    posts.map((post: post) => (
+      <li>
+        <PostPreview post={post} />
+      </li>
+    ))
+  }
+</ul>

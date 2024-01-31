@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components"
+import { Image } from "astro:assets"
+
+const { data } = Astro.props.project
+---
+
+<div class="flex flex-col md:flex-row gap-6 items-center">
+  <Image
+    src={data.image.path}
+    alt={data.image.alt}
+    class="w-[15rem] rounded-md"
+  />
+  <div class="div flex flex-col gap-2 items-center md:items-start">
+    <h4
+      class="text-xl font-semibold text-primary dark:text-dark-primary hover:underline mb-2 cursor-pointer"
+    >
+      {data.name}
+    </h4>
+    <div class="flex gap-2">
+      <a
+        href={data.githubURL}
+        aria-label={`github repo of project ${data.name}`}
+      >
+        <Icon name="icon-park-outline:github-one" aria-hidden="true" />
+      </a>
+      {
+        data.deployURL && (
+          <a
+            href={data.deployURL}
+            aria-label={`deployed website of project ${data.name}`}
+          >
+            <Icon name="iconoir:internet" aria-hidden="true" />
+          </a>
+        )
+      }
+    </div>
+    <p class="flex-grow">
+      {data.description}
+    </p>
+    <p class="">Tech stack: {data.techStack.join(", ")}</p>
+  </div>
+</div>
+
+<style>
+  svg {
+    @apply hover:text-primary dark:hover:text-dark-primary h-5 w-5 cursor-pointer;
+  }
+</style>

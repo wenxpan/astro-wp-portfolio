@@ -30,6 +30,7 @@
     "wcag-contrast": "^3.0.0"
   },
   "devDependencies": {
+    "@iconify-json/iconoir": "^1.1.39",
     "@tailwindcss/typography": "^0.5.10",
     "@types/wcag-contrast": "^3.0.3"
   }
