@@ -1,14 +1,112 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro"
-import { Content as AboutText } from "./_about-full.md"
-import Prose from "@/components/Prose.astro"
+import { Icon } from "astro-icon/components"
 
-const pageTitle = "About"
-const description = "My experience and coding skills"
+const pageTitle = "About Me"
+const description = "Get to know me"
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <Prose>
-    <AboutText />
-  </Prose>
+  <section>
+    <h2>Skills</h2>
+    <div class="flex flex-wrap justify-between skills">
+      <div>
+        <p>Languages</p>
+        <ul>
+          <li>JavaScript</li>
+          <li>TypeScript</li>
+          <li>HTML/CSS</li>
+          <li>Python</li>
+          <li>SQL</li>
+        </ul>
+      </div>
+      <div>
+        <p>Libraries/Framework</p>
+        <ul>
+          <li>React</li>
+          <li>Next.js</li>
+          <li>Node.js</li>
+          <li>Express.js</li>
+          <li>Tailwind CSS</li>
+          <li>Flask</li>
+        </ul>
+      </div>
+      <div>
+        <p>Database</p>
+        <ul>
+          <li>PostgreSQL</li>
+          <li>MySQL</li>
+          <li>MongoDB</li>
+          <li>Convex</li>
+        </ul>
+      </div>
+      <div>
+        <p>Others Skills</p>
+        <ul>
+          <li>UI/UX Design (Figma prototyping)</li>
+          <li>Localisation (Translation)</li>
+          <li>Web Accessibility (WCAG)</li>
+          <li>Cloud Services - AWS</li>
+          <li>Project Management</li>
+          <li>Prompt Engineering</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Experience</h2>
+    <div class="experience">
+      <div>
+        <h3>
+          <Icon name="mdi:work-outline" aria-hidden="true" />Web Developer
+          Intern @ Illume Foundation
+        </h3>
+        <p>Jan 2024 - Present</p>
+      </div>
+      <div>
+        <h3>
+          <Icon name="ph:student" aria-hidden="true" />AWS Certified Developer -
+          Associate
+        </h3>
+        <p>Dec 2023</p>
+      </div>
+      <div>
+        <h3>
+          <Icon name="ph:student" aria-hidden="true" />AWS Certified Solution
+          Architect - Associate
+        </h3>
+        <p>Nov 2023</p>
+      </div>
+      <div>
+        <h3>
+          <Icon name="ph:student" aria-hidden="true" />Diploma of IT @ Coder
+          Academy
+        </h3>
+        <p>Mar 2023 - Sep 2023</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Interests</h2>
+    <p></p>
+  </section>
 </BaseLayout>
+
+<style>
+  h2 {
+    @apply text-2xl font-bold text-primary my-4;
+  }
+  .skills div p {
+    @apply font-semibold;
+  }
+
+  .experience {
+    @apply flex flex-col gap-1;
+  }
+  .experience div {
+    @apply flex justify-between max-w-xl;
+  }
+  .experience div h3 {
+    @apply flex gap-2 items-center;
+  }
+</style>
