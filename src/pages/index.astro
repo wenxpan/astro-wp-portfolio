@@ -41,15 +41,15 @@ const featuredProjects = await getCollection(
   <div class="border-t">
     <h2>Recent Projects</h2>
     <ProjectPreviewList projects={featuredProjects} />
-    <a class="action__redirect" href="/blog" title="All Posts"
-      >All Posts &rarr;</a
+    <a class="action__redirect" href="/projects" title="All Posts"
+      >All Projects &rarr;</a
     >
   </div>
   <div class="border-t">
     <h2>Recent Posts</h2>
     <PostPreviewList posts={posts} />
-    <a class="action__redirect" href="/projects" title="All Posts"
-      >All Projects &rarr;</a
+    <a class="action__redirect" href="/blog" title="All Posts"
+      >All Posts &rarr;</a
     >
   </div>
 </BaseLayout>

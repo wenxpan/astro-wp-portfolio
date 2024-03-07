@@ -8,5 +8,12 @@
     "path": "@images/project-img/task-hatch-cover.png",
     "alt": "screenshot of task hatch app"
   },
-  "techStack": ["tailwind", "React", "NodeJS", "ExpressJS", "MongoDB", "vercel"]
+  "techStack": [
+    "Tailwind CSS",
+    "React",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Vercel"
+  ]
 }
