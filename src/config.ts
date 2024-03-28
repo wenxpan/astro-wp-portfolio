@@ -36,7 +36,7 @@ export const SITE = {
   author: "Wenxuan Pan",
   // authorImage:
   //   "https://pbs.twimg.com/profile_images/1272979356529221632/sxvncugt_400x400.jpg, https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png",
-  authorBio: "Full-stack web developer"
+  authorBio: "Web Developer Crafting Accessible Futures"
 }
 
 // Ink - Theme configuration

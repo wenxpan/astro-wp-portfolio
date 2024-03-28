@@ -4,8 +4,9 @@ import { Image } from "astro:assets"
 import AvatarImg from "@images/avatar.png"
 import ProjectPreviewList from "@/components/ProjectPreviewList.astro"
 import { getCollection } from "astro:content"
+import { SITE } from "@/config"
 
-const description = "Full-stack web developer"
+const description = SITE.authorBio
 
 const featuredProjects = await getCollection(
   "projects",
@@ -36,10 +37,10 @@ const featuredProjects = await getCollection(
     <div class="flex-1 md:text-left self-start">
       <h3 class="mb-4">Hi There!</h3>
       <p class="mb-2">
-        I'm a fullstack web developer, experienced in React and Next.js.
+        I'm a fullstack web developer. I love React and Next.js.
       </p>
       <p class="mb-4">
-        I'm also interested in web accessibility, localisation and AI.
+        I'm interested in web accessibility, localisation and AI.
       </p>
       <p class="italic">
         <a
