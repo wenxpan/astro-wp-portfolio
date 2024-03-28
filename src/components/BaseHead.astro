@@ -1,0 +1,49 @@
+---
+import { SITE } from "@/config"
+import { ViewTransitions } from "astro:transitions"
+
+const { title, description } = Astro.props
+const { image, url } = SITE
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content={description} />
+<meta name="author" content="Wenxuan Pan" />
+<meta
+  name="keywords"
+  content="Wenxuan Pan, Web Development, Web Dev Porfolio"
+/>
+<title>{title}</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Open Graph Tags (Facebook) -->
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+{image && <meta property="og:image" content={image} />}
+<meta property="og:description" content={description} />
+<meta property="og:locale" content="en_GB" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:url" content={url} />
+<meta property="twitter:description" content={description} />
+{image && <meta property="twitter:image" content={image} />}
+
+<ViewTransitions />
+
+<script is:inline>
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark")
+  } else {
+    document.documentElement.classList.remove("dark")
+  }
+</script>

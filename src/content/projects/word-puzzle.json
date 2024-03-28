@@ -1,0 +1,11 @@
+{
+  "isFeatured": false,
+  "name": "Word Puzzle - A Terminal App",
+  "description": "A Wordle-like word game app with various customisable and extended features.",
+  "githubURL": "https://github.com/wenxpan/word-puzzle",
+  "image": {
+    "path": "@images/project-img/word-puzzle-cover.png",
+    "alt": "screenshot of word puzzle app"
+  },
+  "techStack": ["Python"]
+}

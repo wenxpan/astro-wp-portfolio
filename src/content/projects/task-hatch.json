@@ -1,0 +1,19 @@
+{
+  "isFeatured": true,
+  "name": "Task Hatch - Task Management App",
+  "description": "Manage your non-urgent tasks and goals",
+  "githubURL": "https://github.com/wenxpan/task-hatch-frontend",
+  "deployURL": "https://taskhatch.wenxpan.com",
+  "image": {
+    "path": "@images/project-img/task-hatch-cover.png",
+    "alt": "screenshot of task hatch app"
+  },
+  "techStack": [
+    "Tailwind CSS",
+    "React",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "Vercel"
+  ]
+}

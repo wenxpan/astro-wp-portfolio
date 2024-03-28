@@ -1,0 +1,43 @@
+@tailwind base;
+
+@layer base {
+  html {
+    &.dark {
+      @apply text-gray-200;
+      header,
+      footer {
+        @apply text-gray-400 border-gray-700;
+      }
+      strong {
+        @apply text-inherit;
+      }
+    }
+  }
+}
+@tailwind components;
+@tailwind utilities;
+
+/* Specific styles */
+.ink-h {
+  @apply inline-block text-sm font-bold uppercase drop-shadow-lg py-4 tracking-wider opacity-40 dark:opacity-70;
+}
+
+::-webkit-scrollbar {
+  @apply w-3;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-primary dark:bg-primary bg-opacity-20;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary dark:bg-dark-primary bg-opacity-20 dark:bg-opacity-100 shadow-2xl rounded-full;
+}
+
+/** Code block **/
+.astro-code {
+  @apply relative shadow-inner shadow-primary/20 dark:shadow-dark-primary/20 mt-0;
+}
+.remark-code-title {
+  @apply inline-block relative top-4 px-2 pt-1 pb-5 text-sm text-primary dark:text-dark-primary bg-gradient-to-br from-primary/30 dark:from-dark-primary/30 to-dark-primary/30 dark:to-primary/30 rounded-t-md shadow-sm;
+}

@@ -1,0 +1,62 @@
+---
+import { SITE } from "@/config"
+import { Icon } from "astro-icon/components"
+
+const heading = "Wenxuan Pan"
+const subHeading = SITE.authorBio
+---
+
+<header class="flex gap-4 border-b py-3">
+  <div class="header__logo">
+    <a href="/" class="avatar" aria-label="Portfolio home">
+      <Icon
+        name="wp-logo"
+        class="w-16 h-16 rounded-full overflow-hidden text-primary dark:text-dark-primary"
+        aria-hidden="true"
+      />
+    </a>
+  </div>
+  <div class="flex-1">
+    <h2
+      class="text-3xl font-extrabold md:text-5xl text-secondary dark:text-dark-secondary mb-2"
+    >
+      {heading}
+    </h2>
+    <div class="flex">
+      <p class="text-xl flex-1 dark:text-gray-200">
+        {subHeading}
+      </p>
+      <nav class="flex">
+        <ul class="flex gap-3 text-gray-400 dark:text-gray-200">
+          <li>
+            <a href={SITE.githubUrl} aria-label={`${SITE.name}'s Github URL'`}>
+              <Icon name="icon-park-outline:github-one" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/wenxuan-p/"
+              aria-label="Link to LinkedIn profile"
+            >
+              <Icon name="mingcute:linkedin-line" aria-hidden="true" />
+            </a>
+          </li>
+          <li>
+            <a
+              href={"https://devpost.com/wenxpan"}
+              aria-label={`${SITE.name}'s Devpost portfolio'`}
+            >
+              <Icon name="simple-icons:devpost" aria-hidden="true" />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <style>
+    svg {
+      @apply hover:text-primary dark:hover:text-dark-primary min-h-6 min-w-6 cursor-pointer;
+    }
+  </style>
+</header>

@@ -1,0 +1,50 @@
+---
+const {
+  post: { data: post, slug }
+} = Astro.props
+
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+]
+const getMonthName = (date: Date) => MONTHS[new Date(date).getMonth()]
+---
+
+<div class="flex gap-6">
+  <div class="sm:w-20 md:w-32">
+    <div class="flex flex-col w-full text-center">
+      <span class="text-4xl font-semibold text-gray-500 dark:text-gray-300"
+        >{new Date(post.date).getDate()}</span
+      >
+      <span class="text-gray-400 dark:text-gray-50"
+        >{
+          `${getMonthName(post.date)} ${new Date(post.date).getFullYear()}`
+        }</span
+      >
+    </div>
+  </div>
+  <div class="flex-1">
+    <h4 class="text-xl font-semibold text-primary dark:text-dark-primary mb-2">
+      <a href={`/blog/${slug}`} title={post.title} class="hover:underline"
+        >{post.title}</a
+      >
+    </h4>
+    {
+      post.description && (
+        <p class="leading-6 line-clamp-2 dark:text-white hyphens-auto">
+          {post.description}
+        </p>
+      )
+    }
+  </div>
+</div>

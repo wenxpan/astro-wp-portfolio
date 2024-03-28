@@ -1,0 +1,12 @@
+{
+  "isFeatured": true,
+  "name": "CodeCollab - Code Sharing Platform",
+  "description": "For developers to share their side projects and provide peer feedback",
+  "githubURL": "https://github.com/wenxpan/code-sharing-platform",
+  "deployURL": "https://devpost.com/software/code-sharing-platform",
+  "image": {
+    "path": "@images/project-img/codecollab-cover.png",
+    "alt": "screenshot of task hatch app"
+  },
+  "techStack": ["Next.js", "Tailwind CSS", "Convex", "Descope", "Vercel"]
+}
