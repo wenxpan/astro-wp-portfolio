@@ -25,4 +25,7 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())]
     font-size: 1.15em;
     background-color: #f8fcfd;
   }
+  .tag:hover {
+    @apply text-primary;
+  }
 </style>
