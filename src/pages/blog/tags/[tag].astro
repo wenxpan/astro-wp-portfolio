@@ -1,5 +1,6 @@
 ---
 import PostPreview from "@/components/PostPreview.astro"
+import TagList from "@/components/TagList.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { getCollection } from "astro:content"
 
@@ -25,6 +26,7 @@ const { posts } = Astro.props
 ---
 
 <BaseLayout pageTitle={`Posts by tag: #${tag}`}>
+  <TagList />
   <ul class="flex flex-col gap-12">
     {posts.map((post) => <PostPreview post={post} />)}
   </ul>
