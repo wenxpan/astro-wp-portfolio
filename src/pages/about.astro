@@ -7,11 +7,11 @@ const description = "Get to know me"
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <section>
+  <section class="mb-8">
     <h2>Skills</h2>
-    <div class="flex flex-wrap justify-between skills">
-      <div>
-        <p>Languages</p>
+    <div class="grid grid-cols-2 lg:grid-cols-3 skills-container gap-4">
+      <section>
+        <h3>Languages</h3>
         <ul>
           <li>JavaScript</li>
           <li>TypeScript</li>
@@ -19,9 +19,9 @@ const description = "Get to know me"
           <li>Python</li>
           <li>SQL</li>
         </ul>
-      </div>
-      <div>
-        <p>Libraries/Framework</p>
+      </section>
+      <section>
+        <h3>Libraries/Framework</h3>
         <ul>
           <li>React</li>
           <li>Next.js</li>
@@ -30,23 +30,22 @@ const description = "Get to know me"
           <li>Tailwind CSS</li>
           <li>Flask</li>
         </ul>
-      </div>
-      <div>
-        <p>Database</p>
+      </section>
+      <section>
+        <h3>Database</h3>
         <ul>
           <li>PostgreSQL</li>
           <li>MySQL</li>
           <li>MongoDB</li>
           <li>Convex</li>
         </ul>
-      </div>
-      <div>
-        <p>Others Skills</p>
+      </section>
+      <section>
+        <h3>Others Skills</h3>
         <ul>
           <li>UI/UX Design (Figma prototyping)</li>
           <li>Web Accessibility (WCAG)</li>
           <li>Cloud Services - AWS, GCP</li>
-          <li>Prompt Engineering</li>
           <li>
             Translation - <a
               href="https://www.naati.com.au/"
@@ -56,7 +55,7 @@ const description = "Get to know me"
           <li>Project Management</li>
           <li>Video Subtitling</li>
         </ul>
-      </div>
+      </section>
     </div>
   </section>
   <section>
@@ -103,10 +102,13 @@ const description = "Get to know me"
 
 <style>
   h2 {
-    @apply text-2xl font-bold text-primary my-4;
+    @apply text-2xl font-bold text-primary mb-2;
   }
-  .skills div p {
-    @apply font-semibold;
+  .skills-container section {
+    @appy mb-4;
+  }
+  .skills-container section h3 {
+    @apply font-semibold mb-1;
   }
 
   .experience {
