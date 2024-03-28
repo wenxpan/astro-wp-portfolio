@@ -1,5 +1,5 @@
 ---
-title: "Reflecting on 2023 - My Personal and Coding Journey"
+title: "Reflecting on 2023: My Personal and Coding Journey"
 date: "2023-12-30"
 description: 2023 has been a special year for me, and I want to log what I've accomplished and experienced this year.
 tags:

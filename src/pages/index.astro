@@ -10,7 +10,12 @@ import PostPreviewList from "@/components/PostPreviewList.astro"
 
 const description = "Full-stack web developer"
 
-const posts = (await getCollection("posts")).slice(0, 2)
+const posts = await getCollection("posts")
+const latestPosts = posts
+  .sort((a, b) => {
+    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  })
+  .slice(0, 2)
 const featuredProjects = await getCollection(
   "projects",
   ({ data }) => data.isFeatured
@@ -51,7 +56,7 @@ const featuredProjects = await getCollection(
   </div>
   <div class="border-t">
     <h2>Recent Posts</h2>
-    <PostPreviewList posts={posts} />
+    <PostPreviewList posts={latestPosts} />
     <a class="action__redirect" href="/blog" title="All Posts"
       >All Posts &rarr;</a
     >

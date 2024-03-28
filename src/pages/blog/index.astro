@@ -5,10 +5,14 @@ import PostPreviewList from "@/components/PostPreviewList.astro"
 
 const allPosts = await getCollection("posts")
 
+const sortedPosts = allPosts.sort((a, b) => {
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+})
+
 const pageTitle = "Blog"
 const description = "My learning journey"
 ---
 
 <BaseLayout pageTitle={pageTitle} description={description}>
-  <PostPreviewList posts={allPosts} />
+  <PostPreviewList posts={sortedPosts} />
 </BaseLayout>
