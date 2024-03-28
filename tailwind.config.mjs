@@ -58,6 +58,12 @@ export default {
             },
             "blockquote > p::before, p::after": {
               color: theme("colors.dark.primary")
+            },
+            img: { maxWidth: "500px", margin: 0, borderRadius: "0.5rem" },
+            "p:has(> img)": {
+              margin: 0,
+              fontSize: "0.8rem",
+              maxWidth: "500px"
             }
           }
         }

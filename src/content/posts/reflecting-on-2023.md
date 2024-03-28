@@ -13,7 +13,6 @@ tags:
 I quit my job last Christmas and went back to my home country. It was my first visit back since the pandemic began. Lots of tears and laughter; and during this time, I had my first COVID.
 
 ![Me returning Home at Auckland Airport](@images/blog-img/reflecting-2023-0-airport.jpeg)
-
 _I stayed in a New Zealand hotel for a few days for quarantine before returning to China, where I quarantined for another week. Just after I finished my quarantine, China removed its quarantine requirements and opened its borders._
 
 I've learned the following courses to get a high level understanding of frontend development:
@@ -57,14 +56,14 @@ Oh, and one more significant milestone... I FINALLY learned how to ride a bicycl
 I took another break and went back to my home country. I celebrated the Mid-Autumn Festival with my family for the first time in 8 years (since I began my studies in Australia).
 
 ![Eating noodles on the bench](@images/blog-img/reflecting-2023-2-noodles.jpeg)
-_It's my hometown tradition to eat noodles on the bench 😄_
+_Eating Chongqing bench noodles with my family_
 
 ### October
 
 I decided to learn AWS, as I thought that was an important area not covered by Coder Academy. I prepared for a month and passed the SAA-C03 exam.
 
 ![aws result](@images/blog-img/reflecting-2023-3-aws.png)
-_So happy to receive this result!_
+_So happy to receive the result!_
 
 I found the following resources useful:
 
@@ -75,7 +74,7 @@ The first few days of learning were somewhat painful - I had to deal with all th
 
 ### November
 
-I started on my first full-stack app. It was challenging, but so fulfilling. I got to apply all my learnings to create something I've always wanted to build.
+I started on my first full-stack app: [Task Hatch](https://github.com/wenxpan/task-hatch-frontend). It was challenging, but so fulfilling. I got to apply all my learnings to create something I've always wanted to build.
 
 ![scribbles for task hatch](@images/blog-img/reflecting-2023-4-scribe.jpeg)
 _My scribbles_

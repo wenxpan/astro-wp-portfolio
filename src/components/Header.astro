@@ -28,8 +28,6 @@ const subHeading = "Full-stack web developer"
       </p>
       <nav class="flex">
         <ul class="flex gap-3 text-gray-400 dark:text-gray-200">
-          <!-- TODO: add functionality -->
-          <Icon name="icon-park-outline:search" aria-hidden="true" />
           <li>
             <a href={SITE.githubUrl} aria-label={`${SITE.name}'s Github URL'`}>
               <Icon name="icon-park-outline:github-one" aria-hidden="true" />
@@ -44,9 +42,12 @@ const subHeading = "Full-stack web developer"
             </a>
           </li>
           <li>
-            <!-- TODO: add mode switch -->
-            <Icon name="icon-park-outline:sun-one" />
-            <!-- <Icon name="icon-park-outline:moon" /> -->
+            <a
+              href={"https://devpost.com/wenxpan"}
+              aria-label={`${SITE.name}'s Devpost portfolio'`}
+            >
+              <Icon name="simple-icons:devpost" aria-hidden="true" />
+            </a>
           </li>
         </ul>
       </nav>

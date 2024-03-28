@@ -2,24 +2,24 @@
 import BaseLayout from "@layouts/BaseLayout.astro"
 import { Content as AboutText } from "./_about-summary.md"
 import Prose from "@/components/Prose.astro"
-import { getCollection } from "astro:content"
 import { Image } from "astro:assets"
 import AvatarImg from "@images/avatar.png"
 import ProjectPreviewList from "@/components/ProjectPreviewList.astro"
-import PostPreviewList from "@/components/PostPreviewList.astro"
+import { getCollection } from "astro:content"
 
 const description = "Full-stack web developer"
 
-const posts = await getCollection("posts")
-const latestPosts = posts
-  .sort((a, b) => {
-    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-  })
-  .slice(0, 2)
 const featuredProjects = await getCollection(
   "projects",
   ({ data }) => data.isFeatured
 )
+
+// const posts = await getCollection("posts")
+// const latestPosts = posts
+//   .sort((a, b) => {
+//     return new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+//   })
+//   .slice(0, 2)
 ---
 
 <BaseLayout description={description}>
@@ -54,13 +54,13 @@ const featuredProjects = await getCollection(
       >All Projects &rarr;</a
     >
   </div>
-  <div class="border-t">
+  <!-- <div class="border-t">
     <h2>Recent Posts</h2>
     <PostPreviewList posts={latestPosts} />
     <a class="action__redirect" href="/blog" title="All Posts"
       >All Posts &rarr;</a
     >
-  </div>
+  </div> -->
 </BaseLayout>
 
 <style>
